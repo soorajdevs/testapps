@@ -88,6 +88,11 @@ jobs:
       if: matrix.build-mode == 'manual'
       shell: bash
       run: |
+        # Compile all C files (without linking)
+        gcc -c c/*.c -I. 2>/dev/null || true
+        
+        # Compile all C++ files (without linking)
+        g++ -c cpp/*.cpp -I. 2>/dev/null || true
         echo 'If you are using a "manual" build mode for one or more of the' \
           'languages you are analyzing, replace this with the commands to build' \
           'your code, for example:'
